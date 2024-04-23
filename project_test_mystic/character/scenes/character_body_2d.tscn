@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://gskwpxe7cxl7"]
+[gd_scene load_steps=26 format=3 uid="uid://gskwpxe7cxl7"]
 
 [ext_resource type="Script" path="res://character/scripts/character.gd" id="1_73ntp"]
 [ext_resource type="Texture2D" uid="uid://bh5ihfec8xhoy" path="res://character/assets/characters/player.png" id="2_6u76b"]
@@ -367,7 +367,7 @@ tracks/2/path = NodePath("Sprite2D - textura:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -385,6 +385,8 @@ _data = {
 "walk_right": SubResource("Animation_3ocnf"),
 "walk_up": SubResource("Animation_ye4b5")
 }
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ptvha"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r47ok"]
 animation = &"idle_down"
@@ -433,13 +435,16 @@ blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nuuxx"]
+states/StateMachine/node = SubResource("AnimationNodeStateMachine_ptvha")
+states/StateMachine/position = Vector2(716, 184.667)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_aupbw")
 states/idle/position = Vector2(446.667, 68.6667)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_pg0lg")
-states/walk/position = Vector2(610.667, 50)
+states/walk/position = Vector2(445.778, 143.333)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree")]
 script = ExtResource("1_73ntp")
+_animation_tree = NodePath("AnimationTree")
 
 [node name="Sprite2D - textura" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -17)
