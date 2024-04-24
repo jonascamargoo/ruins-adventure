@@ -51,6 +51,7 @@ func _move() -> void:
 func _attack() -> void:
 	# se o botao de ataque for pressionado e nao tiver nenhum ataque em andamento
 	if Input.is_action_just_pressed("attack") and not _is_attacking:
+		set_physics_process(false) # para ele parar de andar enquanto ataca
 		_attack_timer.start()
 		_is_attacking = true
 
@@ -68,4 +69,5 @@ func _animate() -> void:
 # Quando o timer zerar, ele dispara um sinal. Esse sinal é representado por essa função
 # Ao zerar, essa função é chamada
 func _on_attack_timer_timeout() -> void:
+	set_physics_process(true) # voltar a andar enquanto ataca
 	_is_attacking = false
