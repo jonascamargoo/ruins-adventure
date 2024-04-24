@@ -6,19 +6,17 @@ var _is_attacking: bool = false
 @export_category("Variables")
 @export var _move_speed: float = 64.0
 
-# significa que vai demorar mais tempo para retornar ao 0
-@export var _friction:float = 0.2
-# significa que vai demorar mais tempo para acelerar
-@export var _acceleration: float = 0.4
+
+@export var _friction:float = 0.2 # significa que vai demorar mais tempo para retornar ao 0
+@export var _acceleration: float = 0.4 # significa que vai demorar mais tempo para acelerar
 
 @export_category("Objects")
 @export var _attack_timer: Timer = null
 @export var _animation_tree: AnimationTree = null
 
-# chamado quando o nó entra na árvore de cena pela primeira vez.
-func _ready() -> void:
-	# a partir desse playback poderemos viajar entre o idle e walk
-	_state_machine = _animation_tree["parameters/playback"]
+func _ready() -> void: # chamado quando o nó entra na árvore de cena pela primeira vez.
+	_animation_tree.active = true # para ativar a animationTree, caso tenhamos esquecido de reativar ao editar alguma animation
+	_state_machine = _animation_tree["parameters/playback"] # a partir desse playback poderemos viajar entre o idle e walk
 
 # _physics_process eh como se fosse nosso main
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
@@ -71,3 +69,10 @@ func _animate() -> void:
 func _on_attack_timer_timeout() -> void:
 	set_physics_process(true) # voltar a andar enquanto ataca
 	_is_attacking = false
+
+
+func _on_area_2d_body_entered(body) -> void:
+	# se o corpo em questao for do tipo inimigo
+	if body.is_in_group("enemy"):
+		body.update_health(randi_range(1, 5)) # o dano no inimigo sera de 1 a 5
+		
