@@ -23,6 +23,10 @@ window/size/window_width_override=1200
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Mystic Wood"
+
 [input]
 
 move_up={
