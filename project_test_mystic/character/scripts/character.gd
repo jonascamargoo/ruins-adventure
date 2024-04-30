@@ -6,7 +6,6 @@ var _is_attacking: bool = false
 @export_category("Variables")
 @export var _move_speed: float = 64.0
 
-#oii (teste)
 
 @export var _friction:float = 0.2 # significa que vai demorar mais tempo para retornar ao 0
 @export var _acceleration: float = 0.4 # significa que vai demorar mais tempo para acelerar
