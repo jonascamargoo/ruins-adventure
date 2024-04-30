@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cghowvcljvv0i"]
+[gd_scene load_steps=32 format=3 uid="uid://cghowvcljvv0i"]
 
 [ext_resource type="Texture2D" uid="uid://c5x0jsq6tmr4n" path="res://new_main_character/assets/Back animations/spr_player_back_idle.png" id="1_3kse3"]
 [ext_resource type="Script" path="res://new_main_character/scripts/player.gd" id="1_duu3y"]
@@ -389,35 +389,62 @@ _data = {
 "right_walk": SubResource("Animation_dc8kt")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5g8ov"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yogou"]
 animation = &"front_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8qwj8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_stgm3"]
 animation = &"back_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_67nxq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2lea"]
 animation = &"left_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gq2tr"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rmht8"]
 animation = &"right_idle"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_06stn"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_5g8ov")
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dw76l"]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_yogou")
 blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_8qwj8")
+blend_point_1/node = SubResource("AnimationNodeAnimation_stgm3")
 blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_67nxq")
+blend_point_2/node = SubResource("AnimationNodeAnimation_e2lea")
 blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_gq2tr")
+blend_point_3/node = SubResource("AnimationNodeAnimation_rmht8")
 blend_point_3/pos = Vector2(1, 0)
+triangles = PackedInt32Array(0, 1, 2, 0, 1, 3)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3s1vi"]
-states/idle/node = SubResource("AnimationNodeBlendSpace2D_06stn")
-states/idle/position = Vector2(425.333, 43.3333)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ahtsr"]
+animation = &"front_walk"
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5dia"]
+animation = &"back_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4jl6e"]
+animation = &"left_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3bash"]
+animation = &"right_walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fe7vb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ahtsr")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_p5dia")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_4jl6e")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_3bash")
+blend_point_3/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_211ct"]
+states/idle/node = SubResource("AnimationNodeBlendSpace2D_dw76l")
+states/idle/position = Vector2(394.667, 43.3333)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_fe7vb")
+states/walk/position = Vector2(393.778, 112.667)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree")]
 script = ExtResource("1_duu3y")
+_animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0.5, -14)
@@ -435,6 +462,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_3s1vi")
+tree_root = SubResource("AnimationNodeStateMachine_211ct")
 anim_player = NodePath("../Animation")
 parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

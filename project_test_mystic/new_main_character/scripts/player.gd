@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var _state_machine
-var _is_attacking: bool = false
+#var _is_attacking: bool = false
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0
@@ -11,7 +11,7 @@ var _is_attacking: bool = false
 @export var _acceleration: float = 0.4 # significa que vai demorar mais tempo para acelerar
 
 @export_category("Objects")
-@export var _attack_timer: Timer = null
+#@export var _attack_timer: Timer = null
 @export var _animation_tree: AnimationTree = null
 
 func _ready() -> void: # chamado quando o nó entra na árvore de cena pela primeira vez.
@@ -22,7 +22,7 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
 func _physics_process(_delta: float) -> void:
 	_move()
-	_attack()
+	#_attack()
 	_animate()
 	move_and_slide()
 
@@ -37,7 +37,7 @@ func _move() -> void:
 		# dando um get nos parametros e atribuindo de acordo com a _direction
 		_animation_tree["parameters/idle/blend_position"] = _direction
 		_animation_tree["parameters/walk/blend_position"] = _direction
-		_animation_tree["parameters/attack/blend_position"] = _direction
+		#_animation_tree["parameters/attack/blend_position"] = _direction
 		
 		velocity.x = lerp(velocity.x, _direction.normalized().x * _move_speed, _acceleration)
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _acceleration)
@@ -46,17 +46,17 @@ func _move() -> void:
 	velocity.x = lerp(velocity.x, _direction.normalized().x * _move_speed, _friction)
 	velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
 
-func _attack() -> void:
-	# se o botao de ataque for pressionado e nao tiver nenhum ataque em andamento
-	if Input.is_action_just_pressed("attack") and not _is_attacking:
-		set_physics_process(false) # para ele parar de andar enquanto ataca
-		_attack_timer.start()
-		_is_attacking = true
+#func _attack() -> void:
+	## se o botao de ataque for pressionado e nao tiver nenhum ataque em andamento
+	#if Input.is_action_just_pressed("attack") and not _is_attacking:
+		#set_physics_process(false) # para ele parar de andar enquanto ataca
+		#_attack_timer.start()
+		#_is_attacking = true
 
 func _animate() -> void:
-	if _is_attacking:
-		_state_machine.travel("attack")
-		return
+	#if _is_attacking:
+		#_state_machine.travel("attack")
+		#return
 		
 	# verificando se o personagem ta em movimento
 	if velocity.length() > 3:
@@ -66,9 +66,9 @@ func _animate() -> void:
 
 # Quando o timer zerar, ele dispara um sinal. Esse sinal é representado por essa função
 # Ao zerar, essa função é chamada
-func _on_attack_timer_timeout() -> void:
-	set_physics_process(true) # voltar a andar enquanto ataca
-	_is_attacking = false
+#func _on_attack_timer_timeout() -> void:
+	#set_physics_process(true) # voltar a andar enquanto ataca
+	#_is_attacking = false
 
 
 func _on_area_2d_body_entered(body) -> void:
