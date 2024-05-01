@@ -71,9 +71,7 @@ func _on_attack_timer_timeout() -> void:
 	set_physics_process(true) # voltar a andar enquanto ataca
 	_is_attacking = false
 
-
-func _on_area_2d_body_entered(body) -> void:
+func _on_attack_area_body_entered(body) -> void:
 	# se o corpo em questao for do tipo inimigo
 	if body.is_in_group("enemy"):
 		body.update_health(randi_range(1, 5)) # o dano no inimigo sera de 1 a 5
-		
