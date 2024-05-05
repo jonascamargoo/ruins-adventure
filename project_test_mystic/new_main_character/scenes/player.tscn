@@ -818,7 +818,7 @@ states/walk/position = Vector2(393.778, 112.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o6e6"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree") groups=["player"]]
 script = ExtResource("1_duu3y")
 _attack_timer = NodePath("AttackTimer")
 _animation_tree = NodePath("AnimationTree")
