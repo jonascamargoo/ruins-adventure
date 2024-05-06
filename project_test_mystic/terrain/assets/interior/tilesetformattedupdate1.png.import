@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytsx7qspkxr"
-path="res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"
+uid="uid://i3vykok5xlwq"
+path="res://.godot/imported/tilesetformattedupdate1.png-a83e76111dbf377ef39e5f331f4010b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/assets/base_terrain/cave.png"
-dest_files=["res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"]
+source_file="res://terrain/assets/interior/tilesetformattedupdate1.png"
+dest_files=["res://.godot/imported/tilesetformattedupdate1.png-a83e76111dbf377ef39e5f331f4010b2.ctex"]
 
 [params]
 
