@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://61l6hd5mbubp"]
+
+[ext_resource type="PackedScene" uid="uid://evgivmfa3g6f" path="res://terrain/scenes/cave.tscn" id="2_4ot74"]
+[ext_resource type="PackedScene" uid="uid://cghowvcljvv0i" path="res://new_main_character/scenes/player.tscn" id="2_r2ndf"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_r2ndf")]
+
+[node name="Terrain" parent="." instance=ExtResource("2_4ot74")]
