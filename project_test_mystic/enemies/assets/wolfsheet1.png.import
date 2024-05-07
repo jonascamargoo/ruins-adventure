@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytsx7qspkxr"
-path="res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"
+uid="uid://d327bg0mtprnr"
+path="res://.godot/imported/wolfsheet1.png-a55ecada5c8ccae14c5b839b6148a6ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/assets/base_terrain/cave.png"
-dest_files=["res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"]
+source_file="res://enemies/assets/wolfsheet1.png"
+dest_files=["res://.godot/imported/wolfsheet1.png-a55ecada5c8ccae14c5b839b6148a6ac.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytsx7qspkxr"
-path="res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"
+uid="uid://cqooitewnmvm8"
+path="res://.godot/imported/Browser Games - The Enchanted Cave 2 - Bar.png-558e31db60f5cc6746f9aa2b6516b169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/assets/base_terrain/cave.png"
-dest_files=["res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"]
+source_file="res://terrain/assets/interior/Browser Games - The Enchanted Cave 2 - Bar.png"
+dest_files=["res://.godot/imported/Browser Games - The Enchanted Cave 2 - Bar.png-558e31db60f5cc6746f9aa2b6516b169.ctex"]
 
 [params]
 

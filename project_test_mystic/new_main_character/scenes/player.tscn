@@ -818,8 +818,11 @@ states/walk/position = Vector2(393.778, 112.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o6e6"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree") groups=["player"]]
 script = ExtResource("1_duu3y")
+_move_speed = null
+_friction = null
+_acceleration = null
 _attack_timer = NodePath("AttackTimer")
 _animation_tree = NodePath("AnimationTree")
 
@@ -856,6 +859,8 @@ one_shot = true
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_8o6e6")
 disabled = true
+
+[node name="camera" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

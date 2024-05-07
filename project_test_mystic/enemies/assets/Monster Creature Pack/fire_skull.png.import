@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytsx7qspkxr"
-path="res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"
+uid="uid://dypnvvrpm52ea"
+path="res://.godot/imported/fire_skull.png-37bc7c703b4e2b69e400272aff362695.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/assets/base_terrain/cave.png"
-dest_files=["res://.godot/imported/cave.png-b2a2a8b27ae875933336709407eca8e9.ctex"]
+source_file="res://enemies/assets/Monster Creature Pack/fire_skull.png"
+dest_files=["res://.godot/imported/fire_skull.png-37bc7c703b4e2b69e400272aff362695.ctex"]
 
 [params]
 
