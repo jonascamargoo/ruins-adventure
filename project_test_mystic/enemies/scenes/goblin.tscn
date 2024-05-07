@@ -388,10 +388,12 @@ size = Vector2(15, 15)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwkq6"]
 radius = 62.6498
 
-[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation") groups=["enemy"]]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation", "_attack_timer", "_animation_tree") groups=["enemy"]]
 script = ExtResource("1_dcjya")
 _texture = NodePath("Texture")
 _animation = NodePath("Animation")
+_attack_timer = NodePath("AttackTimer")
+_animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
@@ -413,10 +415,14 @@ parameters/attack/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 show_behind_parent = true
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_gkoqh")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -425,5 +431,7 @@ show_behind_parent = true
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_xwkq6")
 
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

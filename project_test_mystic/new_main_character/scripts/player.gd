@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Character
 
 var _state_machine
+var _is_dead: bool = false
 var _is_attacking: bool = false
 
 @export_category("Variables")
@@ -24,6 +25,8 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
 func _physics_process(_delta: float) -> void:
+	if _is_dead:
+		return
 	_move()
 	_attack()
 	_animate()
@@ -76,4 +79,11 @@ func _on_attack_timer_timeout() -> void:
 func _on_attack_area_body_entered(body) -> void:
 	# se o corpo em questao for do tipo inimigo
 	if body.is_in_group("enemy"):
-		body.update_health(randi_range(1, 5)) # o dano no inimigo sera de 1 a 5
+		body.update_health() # o dano no inimigo sera de 1 a 5
+
+func die() -> void:
+	_is_dead = true
+	_state_machine.travel("death")
+	# utilizando corrotinas para reiniciar o level após morte do player
+	await get_tree().create_timer(1, 0).timeout
+	get_tree().reload_current_scene()
