@@ -25,8 +25,6 @@ func _physics_process(_delta: float) -> void:
 			move_and_slide()
 			return
 		_move()
-		# passar para outro método
-
 		move_and_slide()
 
 func _move() -> void:
@@ -82,6 +80,9 @@ func _on_animation_finished(_anim_name: String) -> void:
 func update_health() -> void:
 	_is_dead = true
 
+func die() -> void:
+	_is_dead = true
+	_state_machine.travel("death")
 
 func _on_attack_timer_timeout():
 	set_physics_process(true) # voltar a andar enquanto ataca

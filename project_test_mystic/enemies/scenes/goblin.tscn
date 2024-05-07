@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://8xwtotu6e4lw"]
+[gd_scene load_steps=42 format=3 uid="uid://8xwtotu6e4lw"]
 
 [ext_resource type="Texture2D" uid="uid://cei4lo0y8p1ot" path="res://enemies/assets/Monster Creature Pack/goblin.png" id="1_2p0b5"]
 [ext_resource type="Script" path="res://enemies/scripts/goblin.gd" id="1_dcjya"]
@@ -328,6 +328,29 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_8bwwy")
 blend_point_3/pos = Vector2(-1, 0)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqcpu"]
+animation = &"left_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ha4vg"]
+animation = &"right_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oedwm"]
+animation = &"left_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2c06s"]
+animation = &"right_death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mq7ti"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_nqcpu")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ha4vg")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_oedwm")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2c06s")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dysaj"]
 animation = &"front_idle"
 
@@ -377,6 +400,8 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cq16f"]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_c8op6")
 states/attack/position = Vector2(424.148, 155.333)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_mq7ti")
+states/death/position = Vector2(564, 116.667)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_qlrys")
 states/idle/position = Vector2(418.667, 46)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_bgjdc")
@@ -412,6 +437,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_cq16f")
 anim_player = NodePath("../Animation")
 parameters/attack/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(-0.995413, -0.0143884)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
