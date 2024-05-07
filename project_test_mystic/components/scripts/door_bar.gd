@@ -2,7 +2,7 @@ extends Area2D
 
 class_name DoorComponent
 
-var _player_ref: Character = null
+var _player_ref: CharacterBody2D = null
 
 @export_category("Variables")
 #1250 por 370
@@ -21,7 +21,7 @@ func _process(delta):
 	pass
 
 func _on_body_entered(_body) -> void:
-	if _body is Character:
+	if _body is CharacterBody2D:
 		_player_ref = _body
 		_animation.play("open")
 
