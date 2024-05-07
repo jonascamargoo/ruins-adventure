@@ -23,6 +23,7 @@ func _on_detection_area_body_exited(_body) -> void:
 		_player_ref = null
 		
 func _physics_process(_delta: float) -> void:
+	# _animate()
 	if _player_ref != null:
 		# retornando a direço entre o inimigo e o personagem - subtrai a posicao do inimigo e personagem, normalizando o vetor para retornar valores entre -1 e 1
 		# os pontos em questao: posicao global do inimigo, posicao global personagem
