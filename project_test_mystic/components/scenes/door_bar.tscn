@@ -6,6 +6,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr8jg"]
 size = Vector2(17.625, 8.46875)
 
+[sub_resource type="Animation" id="Animation_dkehh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
 [sub_resource type="Animation" id="Animation_72fwb"]
 resource_name = "open"
 length = 0.4
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [15, 30, 36, 42]
-}
-
-[sub_resource type="Animation" id="Animation_dkehh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("textura:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_45xy1"]
@@ -58,7 +58,7 @@ vframes = 8
 frame = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(161.72, 76)
+position = Vector2(164, 66)
 scale = Vector2(1.28, 1)
 shape = SubResource("RectangleShape2D_xr8jg")
 

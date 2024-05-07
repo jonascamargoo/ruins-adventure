@@ -12,9 +12,9 @@ var _is_attacking: bool = false
 @export var _attack_timer: Timer = null
 @export var _animation_tree: AnimationTree = null
 
-func _ready() -> void: # chamado quando o nó entra na árvore de cena pela primeira vez.
-	_animation_tree.active = true # para ativar a animationTree, caso tenhamos esquecido de reativar ao editar alguma animation
-	_state_machine = _animation_tree["parameters/playback"] # a partir desse playback poderemos viajar entre o idle e walk
+#func _ready() -> void: # chamado quando o nó entra na árvore de cena pela primeira vez.
+	##_animation_tree.active = true # para ativar a animationTree, caso tenhamos esquecido de reativar ao editar alguma animation
+	#_state_machine = _animation_tree["parameters/playback"] # a partir desse playback poderemos viajar entre o idle e walk
 	
 func _physics_process(_delta: float) -> void:
 	#_animate()
