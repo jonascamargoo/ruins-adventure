@@ -5,7 +5,7 @@ var _is_dead: bool = false
 var _player_ref = null # ref ao personagem principal
 var _state_machine
 var _is_attacking: bool = false
-var _health: float = 3
+var _enemy_health: float = 3
 
 @export_category("Objects")
 @export var _texture: Sprite2D = null
@@ -61,7 +61,7 @@ func _attack() -> void:
 		_attack_timer.start()
 		_is_attacking = true
 		#_player_ref.die() # caso queira que ele morra com apenas um toque
-		_player_ref.update_health() # caso queira decrementar a vida do player
+		_player_ref.update_player_health() # caso queira decrementar a vida do player
 
 func _animate() -> void:
 	if _is_attacking:
@@ -76,13 +76,20 @@ func _animate() -> void:
 func _on_animation_finished(_anim_name: String) -> void:
 	# so funciona para animations que nao estao em loop mode
 	# quando a animacao de morte acabar, todas as refs sobre esse inimigo sumiram
-	if _anim_name == "death":
-		queue_free()
-
+	#if _anim_name == "right_death":
+		#queue_free()
+	#if _anim_name == "left_death":
+		#queue_free()
+	queue_free()
 #func update_health() -> void:
 	#_is_dead = true
 
-func die() -> void:
+func update_enemy_health() -> void:
+	# _enemy_health -= 1 # caso queira decrementar a vida
+	kill_enemy() # caso queira matar com um hit apenas
+	print(_enemy_health)
+
+func kill_enemy() -> void:
 	_is_dead = true
 	_state_machine.travel("death")
 

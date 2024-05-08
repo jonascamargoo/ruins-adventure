@@ -79,18 +79,17 @@ func _on_attack_timer_timeout() -> void:
 func _on_attack_area_body_entered(_body) -> void:
 	# se o corpo em questao for do tipo inimigo
 	if _body.is_in_group("enemy"):
-		_body.die() 
-		#_body.update_health() # o dano no inimigo sera de 1 a 5
+		_body.update_enemy_health()
 
 # cada hit do inimigo decrementa a vida do player. Posteriormente fazer isso com os inimigos
-func update_health() -> void:
+func update_player_health() -> void:
 	_health -= 1
 	if _health <= 0:
-		die()
+		kill_player()
 
 
 
-func die() -> void:
+func kill_player() -> void:
 	_is_dead = true
 	_state_machine.travel("death")
 	# utilizando corrotinas para reiniciar o level após morte do player
