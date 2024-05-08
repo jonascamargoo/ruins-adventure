@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://w11f5tjelmqg"]
+[gd_scene load_steps=12 format=3 uid="uid://w11f5tjelmqg"]
 
 [ext_resource type="PackedScene" uid="uid://c6qagfs23a7c0" path="res://terrain/scenes/cave_floor.tscn" id="1_7rc4y"]
 [ext_resource type="PackedScene" uid="uid://ya0xavj3joe6" path="res://terrain/scenes/cave_walls.tscn" id="2_sghfk"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bj6ei7k6t6fn0" path="res://components/scenes/door_bar.tscn" id="6_0r8vo"]
 [ext_resource type="PackedScene" uid="uid://8xwtotu6e4lw" path="res://enemies/scenes/goblin.tscn" id="7_dm4a0"]
 [ext_resource type="PackedScene" uid="uid://u4lfw5nyh4rh" path="res://terrain/scenes/interior_objects_bar.tscn" id="9_umwua"]
+[ext_resource type="PackedScene" uid="uid://dt0sbfp66uibw" path="res://enemies/scenes/wraith.tscn" id="10_gy16d"]
+[ext_resource type="PackedScene" uid="uid://d3wxlmbw55egn" path="res://enemies/scenes/zombie.tscn" id="11_wvapy"]
 
 [node name="level" type="Node2D"]
 
@@ -59,7 +61,13 @@ layer_0/tile_data = PackedInt32Array(720933, 720900, 1, 786460, 720900, 6, 85200
 
 [node name="Player" parent="YSort" instance=ExtResource("5_dl3if")]
 z_index = 2
-position = Vector2(550, 231)
+position = Vector2(431, 244)
 
 [node name="Goblin" parent="YSort" instance=ExtResource("7_dm4a0")]
-position = Vector2(198, 96)
+position = Vector2(166, 461)
+
+[node name="Wraith" parent="YSort" instance=ExtResource("10_gy16d")]
+position = Vector2(130, 33)
+
+[node name="Zombie" parent="YSort" instance=ExtResource("11_wvapy")]
+position = Vector2(657, 457)
