@@ -5,13 +5,13 @@ class_name Character
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
+var _health: float = 5
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0
-
-
 @export var _friction: float = 0.2 # significa que vai demorar mais tempo para retornar ao 0
 @export var _acceleration: float = 0.4 # significa que vai demorar mais tempo para acelerar
+
 
 # Quando crio uma categoria, ela aparece no canto direito da dela, junto com seus respectivos objetos
 @export_category("Objects")
@@ -81,6 +81,14 @@ func _on_attack_area_body_entered(_body) -> void:
 	if _body.is_in_group("enemy"):
 		_body.die() 
 		#_body.update_health() # o dano no inimigo sera de 1 a 5
+
+# cada hit do inimigo decrementa a vida do player. Posteriormente fazer isso com os inimigos
+func update_health() -> void:
+	_health -= 1
+	if _health <= 0:
+		die()
+
+
 
 func die() -> void:
 	_is_dead = true

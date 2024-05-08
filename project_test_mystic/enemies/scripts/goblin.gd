@@ -5,6 +5,7 @@ var _is_dead: bool = false
 var _player_ref = null # ref ao personagem principal
 var _state_machine
 var _is_attacking: bool = false
+var _health: float = 3
 
 @export_category("Objects")
 @export var _texture: Sprite2D = null
@@ -32,8 +33,8 @@ func _move() -> void:
 	# os pontos em questao: posicao global do inimigo, posicao global personagem
 	var _direction: Vector2 = global_position.direction_to(_player_ref.global_position)
 	var _distance:  float = global_position.distance_to(_player_ref.global_position)
-	#if _distance < 20:
-		#_player_ref.die()
+	if _distance < 20:
+		_attack()
 	if _direction != Vector2.ZERO:
 		# dando um get nos parametros e atribuindo de acordo com a _direction
 		_animation_tree["parameters/idle/blend_position"] = _direction
@@ -60,6 +61,8 @@ func _attack() -> void:
 		set_physics_process(false)
 		_attack_timer.start()
 		_is_attacking = true
+		#_player_ref.die() # caso queira que ele morra com apenas um toque
+		_player_ref.update_health() # caso queira decrementar a vida do player
 
 func _animate() -> void:
 	if _is_attacking:
@@ -77,8 +80,8 @@ func _on_animation_finished(_anim_name: String) -> void:
 	if _anim_name == "death":
 		queue_free()
 
-func update_health() -> void:
-	_is_dead = true
+#func update_health() -> void:
+	#_is_dead = true
 
 func die() -> void:
 	_is_dead = true
