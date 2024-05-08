@@ -5,7 +5,7 @@ class_name Character
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
-var _player_health: float = 200
+var _player_health: float = 300
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0
