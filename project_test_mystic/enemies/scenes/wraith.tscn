@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dt0sbfp66uibw"]
+[gd_scene load_steps=42 format=3 uid="uid://dt0sbfp66uibw"]
 
+[ext_resource type="Script" path="res://enemies/scenes/wraith.gd" id="1_8jexa"]
 [ext_resource type="Texture2D" uid="uid://cbl4xeym1hk0y" path="res://enemies/assets/Monster Creature Pack/wraith.png" id="1_d8ji4"]
 
 [sub_resource type="Animation" id="Animation_dyd1k"]
@@ -14,12 +15,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_8xb2y"]
 resource_name = "back_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,6 +72,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_a4es8"]
 resource_name = "front_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -120,6 +123,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_mlrb0"]
 resource_name = "left_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -185,6 +189,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_7pr7j"]
 resource_name = "right_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -267,15 +272,150 @@ _data = {
 "right_walk": SubResource("Animation_eglrc")
 }
 
-[node name="Wraith" type="CharacterBody2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sv8ge"]
+animation = &"front_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qirx7"]
+animation = &"back_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vsikg"]
+animation = &"right_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vb3cr"]
+animation = &"left_attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_u8hc7"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_sv8ge")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_qirx7")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_vsikg")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_vb3cr")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s16gr"]
+animation = &"right_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_531n2"]
+animation = &"right_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_64hi6"]
+animation = &"left_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wjeof"]
+animation = &"left_death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ge74b"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_s16gr")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_531n2")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_64hi6")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_wjeof")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cljp6"]
+animation = &"front_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_omlkq"]
+animation = &"back_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2din6"]
+animation = &"right_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xmtsq"]
+animation = &"left_walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ln3ou"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_cljp6")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_omlkq")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_2din6")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_xmtsq")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dee7a"]
+animation = &"front_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qf3en"]
+animation = &"back_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_817r3"]
+animation = &"right_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h7anm"]
+animation = &"left_walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3n107"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_dee7a")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_qf3en")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_817r3")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_h7anm")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_as270"]
+states/attack/node = SubResource("AnimationNodeBlendSpace2D_u8hc7")
+states/attack/position = Vector2(600, 60.6667)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_ge74b")
+states/death/position = Vector2(600.444, 135.778)
+states/idle/node = SubResource("AnimationNodeBlendSpace2D_ln3ou")
+states/idle/position = Vector2(445.333, 62)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_3n107")
+states/walk/position = Vector2(454.667, 135.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61bac"]
+size = Vector2(20, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2glr"]
+radius = 164.596
+
+[node name="Wraith" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation", "_animation_tree") groups=["enemy"]]
+script = ExtResource("1_8jexa")
+_texture = NodePath("Texture")
+_animation = NodePath("Animation")
+_animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_d8ji4")
 hframes = 4
 vframes = 14
+frame = 8
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dgvs0")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_as270")
+anim_player = NodePath("../Animation")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_61bac")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_n2glr")
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
