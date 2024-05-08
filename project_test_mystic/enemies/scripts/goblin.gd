@@ -60,7 +60,6 @@ func _attack() -> void:
 		_is_attacking = true
 		_attack_timer.start()
 		_is_attacking = true
-		#_player_ref.die() # caso queira que ele morra com apenas um toque
 		_player_ref.update_player_health() # caso queira decrementar a vida do player
 
 func _animate() -> void:
@@ -81,13 +80,12 @@ func _on_animation_finished(_anim_name: String) -> void:
 	#if _anim_name == "left_death":
 		#queue_free()
 	queue_free()
-#func update_health() -> void:
-	#_is_dead = true
+
 
 func update_enemy_health() -> void:
-	# _enemy_health -= 1 # caso queira decrementar a vida
-	kill_enemy() # caso queira matar com um hit apenas
-	print(_enemy_health)
+	_enemy_health -= 1 # caso queira decrementar a vida
+	if _enemy_health <= 0:
+		kill_enemy()
 
 func kill_enemy() -> void:
 	_is_dead = true

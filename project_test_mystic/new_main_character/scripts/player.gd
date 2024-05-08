@@ -5,7 +5,7 @@ class_name Character
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
-var _health: float = 5
+var _player_health: float = 1000
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0
@@ -83,9 +83,11 @@ func _on_attack_area_body_entered(_body) -> void:
 
 # cada hit do inimigo decrementa a vida do player. Posteriormente fazer isso com os inimigos
 func update_player_health() -> void:
-	_health -= 1
-	if _health <= 0:
+	_player_health -= 1
+	print(_player_health)
+	if _player_health <= 0:
 		kill_player()
+
 
 
 
