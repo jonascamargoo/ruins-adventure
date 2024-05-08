@@ -57,8 +57,7 @@ func _on_detection_area_body_exited(_body) -> void:
 func _attack() -> void:
 	var _distance:  float = global_position.distance_to(_player_ref.global_position)
 	if _distance < 20:
-		_is_attacking = true # para ele parar de andar enquanto ataca
-		set_physics_process(false)
+		_is_attacking = true
 		_attack_timer.start()
 		_is_attacking = true
 		#_player_ref.die() # caso queira que ele morra com apenas um toque

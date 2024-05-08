@@ -406,6 +406,7 @@ states/idle/node = SubResource("AnimationNodeBlendSpace2D_qlrys")
 states/idle/position = Vector2(418.667, 46)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_bgjdc")
 states/walk/position = Vector2(419.111, 98.4444)
+graph_offset = Vector2(-131.4, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkoqh"]
 size = Vector2(15, 15)
