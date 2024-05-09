@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c12ahlh1lipom"
-path="res://.godot/imported/goblin.png-9689d43b1b6ad35ab54443a192158d3f.ctex"
+uid="uid://bb4iyremjytu8"
+path="res://.godot/imported/cave_bg.png-5c0147bb500f1d666b95e5abda06d1ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/assets/goblin.png"
-dest_files=["res://.godot/imported/goblin.png-9689d43b1b6ad35ab54443a192158d3f.ctex"]
+source_file="res://menu/cave_bg.png"
+dest_files=["res://.godot/imported/cave_bg.png-5c0147bb500f1d666b95e5abda06d1ec.ctex"]
 
 [params]
 

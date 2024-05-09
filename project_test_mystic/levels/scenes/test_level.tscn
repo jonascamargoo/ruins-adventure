@@ -62,16 +62,16 @@ layer_0/tile_data = PackedInt32Array(720933, 720900, 1, 786460, 720900, 6, 85200
 
 [node name="Player" parent="YSort" instance=ExtResource("5_dl3if")]
 z_index = 2
-position = Vector2(431, 244)
+position = Vector2(132, 42)
 
 [node name="Goblin" parent="YSort" instance=ExtResource("7_dm4a0")]
-position = Vector2(166, 461)
+position = Vector2(467, 278)
 
 [node name="Wraith" parent="YSort" instance=ExtResource("10_gy16d")]
-position = Vector2(323, 323)
+position = Vector2(166, 456)
 
 [node name="Zombie" parent="YSort" instance=ExtResource("11_wvapy")]
 position = Vector2(1301, 390)
 
 [node name="Mummy" parent="YSort" instance=ExtResource("12_cpxpe")]
-position = Vector2(226, 66)
+position = Vector2(633, 462)
