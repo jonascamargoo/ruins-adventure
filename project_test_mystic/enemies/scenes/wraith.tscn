@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://dt0sbfp66uibw"]
+[gd_scene load_steps=44 format=3 uid="uid://dt0sbfp66uibw"]
 
 [ext_resource type="Script" path="res://enemies/scripts/wraith.gd" id="1_8jexa"]
 [ext_resource type="Texture2D" uid="uid://cbl4xeym1hk0y" path="res://enemies/assets/Monster Creature Pack/wraith.png" id="1_d8ji4"]
 [ext_resource type="AudioStream" uid="uid://u2nvs8i0qjwi" path="res://audio/attack/wraith_attack.ogg" id="3_tncex"]
+[ext_resource type="AudioStream" uid="uid://bttg3wtdp38mx" path="res://audio/death/wraith_death.ogg" id="3_uf0kp"]
 
 [sub_resource type="Animation" id="Animation_dyd1k"]
 length = 0.001
@@ -418,6 +419,7 @@ shape = SubResource("RectangleShape2D_61bac")
 shape = SubResource("CircleShape2D_n2glr")
 
 [node name="WraithDeathFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uf0kp")
 
 [node name="WraithAttackFx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_tncex")

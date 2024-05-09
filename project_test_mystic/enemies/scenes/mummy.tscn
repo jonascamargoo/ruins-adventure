@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://ba1a0kbubsj22"]
+[gd_scene load_steps=44 format=3 uid="uid://ba1a0kbubsj22"]
 
 [ext_resource type="Script" path="res://enemies/scripts/mummy.gd" id="1_wk2ai"]
 [ext_resource type="Texture2D" uid="uid://b0l3h4sn064q" path="res://enemies/assets/Monster Creature Pack/mummy.png" id="1_xru30"]
 [ext_resource type="AudioStream" uid="uid://dsuui7pqi803t" path="res://audio/death/mummy_death.ogg" id="3_mfky0"]
+[ext_resource type="AudioStream" uid="uid://b5y8ukyy8nmqm" path="res://audio/attack/mummy_attack.wav" id="4_5o7n3"]
 
 [sub_resource type="Animation" id="Animation_au1ac"]
 length = 0.001
@@ -420,6 +421,7 @@ shape = SubResource("CircleShape2D_aeing")
 stream = ExtResource("3_mfky0")
 
 [node name="MummyAttackFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5o7n3")
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

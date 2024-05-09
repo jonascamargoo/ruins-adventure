@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://8xwtotu6e4lw"]
+[gd_scene load_steps=44 format=3 uid="uid://8xwtotu6e4lw"]
 
 [ext_resource type="Texture2D" uid="uid://cei4lo0y8p1ot" path="res://enemies/assets/Monster Creature Pack/goblin.png" id="1_2p0b5"]
 [ext_resource type="Script" path="res://enemies/scripts/goblin.gd" id="1_dcjya"]
+[ext_resource type="AudioStream" uid="uid://2mo4bdy0yn6i" path="res://audio/death/goblin_death.ogg" id="3_m4ee7"]
 [ext_resource type="AudioStream" uid="uid://cbj3rqrk8unc1" path="res://audio/attack/goblin_attack.wav" id="3_vbqbt"]
 
 [sub_resource type="Animation" id="Animation_8kulv"]
@@ -464,6 +465,7 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_xwkq6")
 
 [node name="GoblinDeathFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m4ee7")
 
 [node name="GoblinAttackFx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_vbqbt")

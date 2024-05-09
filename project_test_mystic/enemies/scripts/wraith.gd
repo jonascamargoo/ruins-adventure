@@ -65,7 +65,6 @@ func _animate() -> void:
 func update_enemy_health() -> void:
 	_enemy_health -= 1 # caso queira decrementar a vida
 	if _enemy_health <= 0:
-	
 		kill_enemy()
 
 func kill_enemy() -> void:

@@ -419,7 +419,7 @@ shape = SubResource("RectangleShape2D_we438")
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_uoio7")
 
-[node name="ZombieAttackFx" type="AudioStreamPlayer2D" parent="."]
+[node name="s" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_e3sq3")
 
 [node name="ZombieDeathFx" type="AudioStreamPlayer2D" parent="."]
