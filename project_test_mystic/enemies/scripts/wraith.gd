@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Goblin
+class_name Wraith
 
 var _is_dead: bool = false
 var _player_ref = null # ref ao personagem principal
@@ -10,7 +10,6 @@ var _enemy_health: float = 3
 @export_category("Objects")
 @export var _texture: Sprite2D = null
 @export var _animation: AnimationPlayer = null
-@export var _attack_timer: Timer = null
 @export var _animation_tree: AnimationTree = null
 
 func _ready() -> void: # chamado quando o nó entra na árvore de cena pela primeira vez.
@@ -44,23 +43,13 @@ func _move() -> void:
 		return
 	
 
-func _on_detection_area_body_entered(_body) -> void:
-	if _body.is_in_group("player"):
-		_player_ref = _body
-		
-	
-# saindo da area de deteccao do inimigo
-func _on_detection_area_body_exited(_body) -> void:
-	if _body.is_in_group("player"):
-		_player_ref = null
-		
+
 func _attack() -> void:
 	var _distance:  float = global_position.distance_to(_player_ref.global_position)
 	if _distance < 20:
 		if !_is_attacking:
-			$GoblinAttackFx.play()
+			$WraithAttackFx.play()
 		_is_attacking = true
-		_attack_timer.start()
 		_player_ref.update_player_health() # caso queira decrementar a vida do player
 
 func _animate() -> void:
@@ -73,26 +62,30 @@ func _animate() -> void:
 	_state_machine.travel("idle")
 	
 
+func update_enemy_health() -> void:
+	_enemy_health -= 1 # caso queira decrementar a vida
+	if _enemy_health <= 0:
+	
+		kill_enemy()
+
+func kill_enemy() -> void:
+	$WraithDeathFx.play()
+	_is_dead = true
+	_state_machine.travel("death")
+
+func _on_detection_area_body_entered(_body) -> void:
+	if _body.is_in_group("player"):
+		_player_ref = _body
+	
+
+func _on_detection_area_body_exited(_body):
+	if _body.is_in_group("player"):
+		_player_ref = null
+
+
 func _on_animation_finished(_anim_name: String) -> void:
-	# so funciona para animations que nao estao em loop mode
-	# quando a animacao de morte acabar, todas as refs sobre esse inimigo sumiram
 	#if _anim_name == "right_death":
 		#queue_free()
 	#if _anim_name == "left_death":
 		#queue_free()
 	queue_free()
-
-
-func update_enemy_health() -> void:
-	_enemy_health -= 1 # caso queira decrementar a vida
-	if _enemy_health <= 0:
-		kill_enemy()
-
-func kill_enemy() -> void:
-	$GoblinDeathFx.play()
-	_is_dead = true
-	_state_machine.travel("death")
-
-func _on_attack_timer_timeout():
-	set_physics_process(true) # voltar a andar enquanto ataca
-	_is_attacking = false

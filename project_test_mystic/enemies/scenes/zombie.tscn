@@ -1,7 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://d3wxlmbw55egn"]
+[gd_scene load_steps=44 format=3 uid="uid://d3wxlmbw55egn"]
 
-[ext_resource type="Script" path="res://enemies/scenes/zombie.gd" id="1_86hcq"]
+[ext_resource type="Script" path="res://enemies/scripts/zombie.gd" id="1_86hcq"]
 [ext_resource type="Texture2D" uid="uid://c8763rxyburqb" path="res://enemies/assets/Monster Creature Pack/zombie.png" id="1_ydc2k"]
+[ext_resource type="AudioStream" uid="uid://cfwiou1u8hno6" path="res://audio/attack/zombie_attack.wav" id="3_e3sq3"]
+[ext_resource type="AudioStream" uid="uid://dninnunp3jtln" path="res://audio/death/zombie_death.ogg" id="4_mjvgy"]
 
 [sub_resource type="Animation" id="Animation_her0m"]
 length = 0.001
@@ -416,6 +418,12 @@ shape = SubResource("RectangleShape2D_we438")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_uoio7")
+
+[node name="ZombieAttackFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e3sq3")
+
+[node name="ZombieDeathFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mjvgy")
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

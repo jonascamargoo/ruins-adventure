@@ -57,6 +57,7 @@ func _attack() -> void:
 	if Input.is_action_just_pressed("attack") and not _is_attacking:
 		set_physics_process(false) # para ele parar de andar enquanto ataca
 		_attack_timer.start()
+		$PlayerAttackFx.play()
 		_is_attacking = true
 
 func _animate() -> void:
@@ -84,16 +85,14 @@ func _on_attack_area_body_entered(_body) -> void:
 # cada hit do inimigo decrementa a vida do player. Posteriormente fazer isso com os inimigos
 func update_player_health() -> void:
 	_player_health -= 1
-	print(_player_health)
 	if _player_health <= 0:
 		kill_player()
-
-
 
 
 func kill_player() -> void:
 	_is_dead = true
 	_state_machine.travel("death")
+	$PlayerDeathFx.play()
 	# utilizando corrotinas para reiniciar o level após morte do player
 	await get_tree().create_timer(1, 0).timeout
 	get_tree().reload_current_scene()
