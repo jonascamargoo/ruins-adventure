@@ -5,7 +5,8 @@ class_name Character
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
-var _player_health: float = 300
+var _player_health: float = 700
+var _enemies_length: int = 0;
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0
@@ -25,6 +26,8 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
 func _physics_process(_delta: float) -> void:
+	print(_enemies_length)
+	_is_finished()
 	if _is_dead:
 		return
 	_move()
@@ -88,6 +91,10 @@ func update_player_health() -> void:
 	if _player_health <= 0:
 		kill_player()
 
+func _is_finished() -> void:
+	if _enemies_length == 4:
+		await get_tree().create_timer(1, 0).timeout
+		get_tree().change_scene_to_file("res://menu/title_screen.tscn")
 
 func kill_player() -> void:
 	_is_dead = true

@@ -62,6 +62,7 @@ func kill_enemy() -> void:
 	$MummyDeathFx.play()
 	_is_dead = true
 	_state_machine.travel("death")
+	_player_ref._enemies_length += 1
 	await get_tree().create_timer(1, 0).timeout
 	queue_free()
 
