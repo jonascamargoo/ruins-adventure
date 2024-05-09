@@ -420,11 +420,8 @@ size = Vector2(15, 15)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwkq6"]
 radius = 62.6498
 
-[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation", "_attack_timer", "_animation_tree") groups=["enemy"]]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
 script = ExtResource("1_dcjya")
-_texture = NodePath("Texture")
-_animation = NodePath("Animation")
-_attack_timer = NodePath("AttackTimer")
 _animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]

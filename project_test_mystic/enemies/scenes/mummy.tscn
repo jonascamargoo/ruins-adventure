@@ -381,10 +381,8 @@ size = Vector2(20, 25)
 [sub_resource type="CircleShape2D" id="CircleShape2D_aeing"]
 radius = 107.075
 
-[node name="Mummy" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation", "_animation_tree") groups=["enemy"]]
+[node name="Mummy" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
 script = ExtResource("1_wk2ai")
-_texture = NodePath("Texture")
-_animation = NodePath("Animation")
 _animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]

@@ -382,10 +382,8 @@ size = Vector2(15, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoio7"]
 radius = 127.004
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation", "_animation_tree") groups=["enemy"]]
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
 script = ExtResource("1_86hcq")
-_texture = NodePath("Texture")
-_animation = NodePath("Animation")
 _animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -419,7 +417,7 @@ shape = SubResource("RectangleShape2D_we438")
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_uoio7")
 
-[node name="s" type="AudioStreamPlayer2D" parent="."]
+[node name="ZombieAttackFx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_e3sq3")
 
 [node name="ZombieDeathFx" type="AudioStreamPlayer2D" parent="."]

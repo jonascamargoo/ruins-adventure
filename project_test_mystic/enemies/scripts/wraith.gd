@@ -8,8 +8,6 @@ var _is_attacking: bool = false
 var _enemy_health: float = 3
 
 @export_category("Objects")
-@export var _texture: Sprite2D = null
-@export var _animation: AnimationPlayer = null
 @export var _animation_tree: AnimationTree = null
 
 func _ready() -> void:
@@ -55,7 +53,6 @@ func _animate() -> void:
 		return
 	_state_machine.travel("idle")
 	
-
 func update_enemy_health() -> void:
 	_enemy_health -= 1
 	if _enemy_health <= 0:
