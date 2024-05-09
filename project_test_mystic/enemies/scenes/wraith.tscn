@@ -207,7 +207,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_r3dsh"]
 resource_name = "right_death"
-length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -424,6 +423,5 @@ stream = ExtResource("3_uf0kp")
 [node name="WraithAttackFx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_tncex")
 
-[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
