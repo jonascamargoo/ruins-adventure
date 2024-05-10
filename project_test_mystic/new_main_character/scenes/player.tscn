@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cghowvcljvv0i"]
+[gd_scene load_steps=57 format=3 uid="uid://cghowvcljvv0i"]
 
 [ext_resource type="Texture2D" uid="uid://c5x0jsq6tmr4n" path="res://new_main_character/assets/Back animations/spr_player_back_idle.png" id="1_3kse3"]
 [ext_resource type="Script" path="res://new_main_character/scripts/player.gd" id="1_duu3y"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://trdhxepq5dre" path="res://new_main_character/assets/Special animations/spr_player_death.png" id="14_6g2ir"]
 [ext_resource type="AudioStream" uid="uid://beyhvu0ndpo87" path="res://audio/death/player_death.wav" id="15_56po1"]
 [ext_resource type="AudioStream" uid="uid://rkupspi4bkha" path="res://audio/attack/sword_attack.wav" id="16_r5jsu"]
+[ext_resource type="AudioStream" uid="uid://ciw1ee8kq4ywo" path="res://audio/others/level_completed.wav" id="17_4jml8"]
+[ext_resource type="AudioStream" uid="uid://dg7fc45bkhbvs" path="res://audio/others/amb_cavewatery_lp.ogg" id="18_ka2af"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw35l"]
 size = Vector2(15, 5.21875)
@@ -934,6 +936,13 @@ stream = ExtResource("15_56po1")
 
 [node name="PlayerAttackFx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_r5jsu")
+
+[node name="FinishedFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_4jml8")
+
+[node name="StartedFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_ka2af")
+volume_db = 14.667
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
