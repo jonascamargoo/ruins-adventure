@@ -6,7 +6,9 @@ var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
 var _player_health: float = 700
-var _enemies_length: int = 0;
+var _currentSound: AudioStreamPlayer2D = null
+var _enemies_length: int = 0
+var _place = 0 # o place 0 eh a caverna principal, 1 a taberna e 2 a floresta
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0
@@ -23,6 +25,7 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 	_animation_tree.active = true # para ativar a animationTree, caso tenhamos esquecido de reativar ao editar alguma animation
 	_state_machine = _animation_tree["parameters/playback"] # a partir desse playback poderemos viajar entre o idle e walk
 	$StartedFx.play()
+	
 
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
 func _physics_process(_delta: float) -> void:
@@ -72,6 +75,7 @@ func _animate() -> void:
 		_state_machine.travel("walk")
 		return
 	_state_machine.travel("idle")
+
 
 # Quando o timer zerar, ele dispara um sinal. Esse sinal é representado por essa função
 # Ao zerar, essa função é chamada

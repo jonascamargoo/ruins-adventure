@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj6ei7k6t6fn0"]
+[gd_scene load_steps=8 format=3 uid="uid://bj6ei7k6t6fn0"]
 
 [ext_resource type="Script" path="res://components/scripts/door_bar.gd" id="1_q2i7p"]
 [ext_resource type="Texture2D" uid="uid://djxjav204av5l" path="res://terrain/assets/interior/lpc-doors-animated-1.png" id="2_a8ukl"]
+[ext_resource type="AudioStream" uid="uid://cg2x2df231gtp" path="res://audio/others/door.ogg" id="3_q1oyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr8jg"]
 size = Vector2(14.2813, 6.23438)
@@ -66,6 +67,9 @@ shape = SubResource("RectangleShape2D_xr8jg")
 libraries = {
 "": SubResource("AnimationLibrary_45xy1")
 }
+
+[node name="DoorFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q1oyq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]

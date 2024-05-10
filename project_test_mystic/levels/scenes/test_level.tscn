@@ -71,7 +71,7 @@ layer_0/tile_data = PackedInt32Array(720933, 720900, 1, 786460, 720900, 6, 85200
 [node name="Player" parent="YSort" instance=ExtResource("5_dl3if")]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(139, 53)
+position = Vector2(598, 448)
 
 [node name="Goblin" parent="YSort" instance=ExtResource("7_dm4a0")]
 z_index = 2
