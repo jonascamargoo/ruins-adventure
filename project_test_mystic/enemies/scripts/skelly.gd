@@ -57,9 +57,9 @@ func _physics_process(_delta: float) -> void:
 			if _on_detection_area_body_entered(_player_ref):
 				_move(_direction)
 				if _distance < 25:
-					if _on_attack_area_body_entered(_player_ref):
-						_is_attacking = true
-						_attack()
+					_is_attacking = true
+					_attack()
+
 	else:
 		velocity = Vector2.ZERO
 		_animate()
@@ -75,6 +75,7 @@ func _move(_direction: Vector2) -> void:
 
 func _attack() -> void:
 	_timer.start()
+	$skelly_attack.play()
 	_state_machine.travel("attack")
 	_player_ref.update_player_health()
 	return
@@ -105,7 +106,6 @@ func update_enemy_health() -> void:
 
 func _on_attack_area_body_entered(_body)-> bool:
 	if _player_ref.is_in_group("player"):
-		$skelly_attack.play()
 		_is_attacking = true
 		
 	return _is_attacking

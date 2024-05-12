@@ -38,9 +38,8 @@ func _move(_direction: Vector2, _distance: float) -> void:
 		return
 
 func _attack(_distance) -> void:
-	if _distance < 20:
-		if !_is_attacking:
-			$WraithAttackFx.play()
+	if _distance < 20 && _is_attacking:
+		$WraithAttackFx.play()
 		_is_attacking = true
 		_player_ref.update_player_health()
 

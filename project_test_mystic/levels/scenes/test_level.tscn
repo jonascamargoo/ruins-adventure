@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://w11f5tjelmqg"]
+[gd_scene load_steps=17 format=3 uid="uid://w11f5tjelmqg"]
 
 [ext_resource type="PackedScene" uid="uid://c6qagfs23a7c0" path="res://terrain/scenes/cave_floor.tscn" id="1_7rc4y"]
 [ext_resource type="PackedScene" uid="uid://ya0xavj3joe6" path="res://terrain/scenes/cave_walls.tscn" id="2_sghfk"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://oyukdemmq4q1" path="res://terrain/scenes/interior_bar.tscn" id="4_2hckm"]
 [ext_resource type="PackedScene" uid="uid://j7181p1jj77v" path="res://terrain/scenes/exterior_objects.tscn" id="4_pduop"]
 [ext_resource type="PackedScene" uid="uid://7gxer8a2eh6m" path="res://terrain/scenes/cave_forest.tscn" id="5_7qglv"]
-[ext_resource type="PackedScene" uid="uid://cghowvcljvv0i" path="res://new_main_character/scenes/player.tscn" id="5_dl3if"]
+[ext_resource type="PackedScene" uid="uid://cghowvcljvv0i" path="res://player/scenes/player.tscn" id="5_dl3if"]
 [ext_resource type="PackedScene" uid="uid://bj6ei7k6t6fn0" path="res://components/scenes/door_bar.tscn" id="6_0r8vo"]
 [ext_resource type="PackedScene" uid="uid://cq5sv3ouks6q0" path="res://components/scenes/stair.tscn" id="7_3vrx7"]
 [ext_resource type="PackedScene" uid="uid://8xwtotu6e4lw" path="res://enemies/scenes/goblin.tscn" id="7_dm4a0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d3wxlmbw55egn" path="res://enemies/scenes/zombie.tscn" id="11_wvapy"]
 [ext_resource type="PackedScene" uid="uid://ba1a0kbubsj22" path="res://enemies/scenes/mummy.tscn" id="12_cpxpe"]
 [ext_resource type="PackedScene" uid="uid://5mxeoixooeac" path="res://enemies/scenes/skelly.tscn" id="15_iei2l"]
+[ext_resource type="PackedScene" uid="uid://cajxd48b74fe7" path="res://menu/pause.tscn" id="16_nkh5e"]
 
 [node name="level" type="Node2D"]
 
@@ -100,3 +101,6 @@ position = Vector2(593, 444)
 
 [node name="skelly" parent="YSort" instance=ExtResource("15_iei2l")]
 position = Vector2(135, 37)
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_nkh5e")]
+visible = false
