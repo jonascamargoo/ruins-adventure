@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://w11f5tjelmqg"]
+[gd_scene load_steps=16 format=3 uid="uid://w11f5tjelmqg"]
 
 [ext_resource type="PackedScene" uid="uid://c6qagfs23a7c0" path="res://terrain/scenes/cave_floor.tscn" id="1_7rc4y"]
 [ext_resource type="PackedScene" uid="uid://ya0xavj3joe6" path="res://terrain/scenes/cave_walls.tscn" id="2_sghfk"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dt0sbfp66uibw" path="res://enemies/scenes/wraith.tscn" id="10_gy16d"]
 [ext_resource type="PackedScene" uid="uid://d3wxlmbw55egn" path="res://enemies/scenes/zombie.tscn" id="11_wvapy"]
 [ext_resource type="PackedScene" uid="uid://ba1a0kbubsj22" path="res://enemies/scenes/mummy.tscn" id="12_cpxpe"]
+[ext_resource type="PackedScene" uid="uid://5mxeoixooeac" path="res://enemies/scenes/skelly.tscn" id="15_iei2l"]
 
 [node name="level" type="Node2D"]
 
@@ -79,7 +80,7 @@ layer_0/tile_data = PackedInt32Array(720933, 720900, 1, 786460, 720900, 6, 85200
 [node name="Player" parent="YSort" instance=ExtResource("5_dl3if")]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(546, 424)
+position = Vector2(185, 133)
 
 [node name="Goblin" parent="YSort" instance=ExtResource("7_dm4a0")]
 z_index = 2
@@ -95,4 +96,7 @@ position = Vector2(1317, 387)
 
 [node name="Mummy" parent="YSort" instance=ExtResource("12_cpxpe")]
 z_index = 2
-position = Vector2(501, 358)
+position = Vector2(593, 444)
+
+[node name="skelly" parent="YSort" instance=ExtResource("15_iei2l")]
+position = Vector2(135, 37)
