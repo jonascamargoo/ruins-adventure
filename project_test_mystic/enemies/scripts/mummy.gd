@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Goblin
+class_name Mummy
 
 var _is_dead: bool = false
 var _player_ref = null # ref ao personagem principal
@@ -40,7 +40,7 @@ func _move(_direction: Vector2, _distance: float) -> void:
 func _attack(_distance) -> void:
 	if _distance < 20:
 		if !_is_attacking:
-			$GoblinAttackFx.play()
+			$MummyAttackFx.play()
 		_is_attacking = true
 		_player_ref.update_player_health()
 
@@ -59,10 +59,10 @@ func update_enemy_health() -> void:
 		kill_enemy()
 
 func kill_enemy() -> void:
-	$GoblinDeathFx.play()
+	$MummyDeathFx.play()
 	_is_dead = true
-	_player_ref._enemies_length += 1
 	_state_machine.travel("death")
+	_player_ref._enemies_length += 1
 	await get_tree().create_timer(1, 0).timeout
 	queue_free()
 

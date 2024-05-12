@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cghowvcljvv0i"]
+[gd_scene load_steps=57 format=3 uid="uid://cghowvcljvv0i"]
 
 [ext_resource type="Texture2D" uid="uid://c5x0jsq6tmr4n" path="res://new_main_character/assets/Back animations/spr_player_back_idle.png" id="1_3kse3"]
 [ext_resource type="Script" path="res://new_main_character/scripts/player.gd" id="1_duu3y"]
@@ -13,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://ck4e25k47ao3u" path="res://new_main_character/assets/Back animations/spr_player_back_attack.png" id="11_cqklr"]
 [ext_resource type="Texture2D" uid="uid://df3yx5c50bqx0" path="res://new_main_character/assets/Side animations/spr_player_right_attack.png" id="12_lvw0a"]
 [ext_resource type="Texture2D" uid="uid://boqfeiq0l7m5r" path="res://new_main_character/assets/Side animations/spr_player_left_attack.png" id="13_yuiea"]
+[ext_resource type="Texture2D" uid="uid://trdhxepq5dre" path="res://new_main_character/assets/Special animations/spr_player_death.png" id="14_6g2ir"]
+[ext_resource type="AudioStream" uid="uid://beyhvu0ndpo87" path="res://audio/death/player_death.wav" id="15_56po1"]
+[ext_resource type="AudioStream" uid="uid://rkupspi4bkha" path="res://audio/attack/sword_attack.wav" id="16_r5jsu"]
+[ext_resource type="AudioStream" uid="uid://dg7fc45bkhbvs" path="res://audio/others/amb_cavewatery_lp.ogg" id="18_ka2af"]
+[ext_resource type="AudioStream" uid="uid://dbh6jpv4jtr3v" path="res://audio/others/forest_sound.ogg" id="20_d433v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw35l"]
 size = Vector2(15, 5.21875)
@@ -247,6 +252,45 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_d7uce"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_6g2ir")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_dbcyx"]
@@ -727,6 +771,7 @@ _data = {
 "back_attack": SubResource("Animation_suep2"),
 "back_idle": SubResource("Animation_eaxsb"),
 "back_walk": SubResource("Animation_xhr34"),
+"death": SubResource("Animation_d7uce"),
 "front_attack": SubResource("Animation_dbcyx"),
 "front_idle": SubResource("Animation_pl5x0"),
 "front_walk": SubResource("Animation_m5ugq"),
@@ -758,6 +803,29 @@ blend_point_1/pos = Vector2(0, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_cmhpu")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_tmgpa")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pndc0"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvecx"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hmlo8"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8nmca"]
+animation = &"front_attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_12ojp"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pndc0")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gvecx")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_hmlo8")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_8nmca")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
@@ -810,19 +878,19 @@ blend_point_3/pos = Vector2(1, 0)
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_211ct"]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_561lu")
-states/attack/position = Vector2(395.704, 180.667)
+states/attack/position = Vector2(462.371, 44.667)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_12ojp")
+states/death/position = Vector2(490.678, 106)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_dw76l")
-states/idle/position = Vector2(394.667, 43.3333)
+states/idle/position = Vector2(312.494, 38)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_fe7vb")
-states/walk/position = Vector2(393.778, 112.667)
+states/walk/position = Vector2(323.079, 135.334)
+graph_offset = Vector2(-151.989, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o6e6"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_attack_timer", "_animation_tree") groups=["player"]]
 script = ExtResource("1_duu3y")
-_move_speed = null
-_friction = null
-_acceleration = null
 _attack_timer = NodePath("AttackTimer")
 _animation_tree = NodePath("AnimationTree")
 
@@ -846,6 +914,7 @@ active = false
 tree_root = SubResource("AnimationNodeStateMachine_211ct")
 anim_player = NodePath("../Animation")
 parameters/attack/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
@@ -861,6 +930,23 @@ shape = SubResource("RectangleShape2D_8o6e6")
 disabled = true
 
 [node name="camera" type="Camera2D" parent="."]
+
+[node name="PlayerDeathFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_56po1")
+
+[node name="PlayerAttackFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_r5jsu")
+
+[node name="FinishedFx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StartedFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_ka2af")
+volume_db = 14.667
+
+[node name="BarFx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ForestFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_d433v")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

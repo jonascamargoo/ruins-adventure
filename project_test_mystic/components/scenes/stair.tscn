@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq5sv3ouks6q0"]
+
+[ext_resource type="Texture2D" uid="uid://q0nud44h5lua" path="res://terrain/assets/base_terrain/Browser Games - The Enchanted Cave 2 - Cave.png" id="1_cl8eh"]
+[ext_resource type="Script" path="res://components/scripts/stair.gd" id="1_tlikn"]
+[ext_resource type="AudioStream" uid="uid://csm0csinghvtk" path="res://audio/others/stairs.ogg" id="3_g8k10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7db4x"]
+size = Vector2(11, 30)
+
+[node name="stair" type="Area2D"]
+script = ExtResource("1_tlikn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cl8eh")
+hframes = 8
+vframes = 9
+frame = 56
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0)
+shape = SubResource("RectangleShape2D_7db4x")
+
+[node name="steps_stair" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g8k10")
+volume_db = 3.2
+attenuation = 1.86607
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://8xwtotu6e4lw"]
+[gd_scene load_steps=44 format=3 uid="uid://8xwtotu6e4lw"]
 
 [ext_resource type="Texture2D" uid="uid://cei4lo0y8p1ot" path="res://enemies/assets/Monster Creature Pack/goblin.png" id="1_2p0b5"]
 [ext_resource type="Script" path="res://enemies/scripts/goblin.gd" id="1_dcjya"]
+[ext_resource type="AudioStream" uid="uid://2mo4bdy0yn6i" path="res://audio/death/goblin_death.ogg" id="3_m4ee7"]
+[ext_resource type="AudioStream" uid="uid://cbj3rqrk8unc1" path="res://audio/attack/goblin_attack.wav" id="3_vbqbt"]
 
 [sub_resource type="Animation" id="Animation_8kulv"]
 length = 0.001
@@ -33,6 +35,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_3jt34"]
 resource_name = "back_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,6 +98,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_80e72"]
 resource_name = "front_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -145,6 +149,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_t4svx"]
 resource_name = "left_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -211,6 +216,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ynyi4"]
 resource_name = "right_attack"
 length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -305,14 +311,118 @@ _data = {
 "right_walk": SubResource("Animation_85ojj")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3g727"]
+animation = &"front_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_npbs4"]
+animation = &"right_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i4qep"]
+animation = &"back_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bwwy"]
+animation = &"left_attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_c8op6"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3g727")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_npbs4")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_i4qep")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_8bwwy")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqcpu"]
+animation = &"left_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ha4vg"]
+animation = &"right_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oedwm"]
+animation = &"left_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2c06s"]
+animation = &"right_death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mq7ti"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_nqcpu")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ha4vg")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_oedwm")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2c06s")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dysaj"]
+animation = &"front_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gb8h0"]
+animation = &"back_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cw311"]
+animation = &"right_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkvqa"]
+animation = &"left_idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qlrys"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_dysaj")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gb8h0")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_cw311")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_dkvqa")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7v1j8"]
+animation = &"left_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejrkn"]
+animation = &"back_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fxp3i"]
+animation = &"right_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdbli"]
+animation = &"front_walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bgjdc"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7v1j8")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ejrkn")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_fxp3i")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_jdbli")
+blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cq16f"]
+states/attack/node = SubResource("AnimationNodeBlendSpace2D_c8op6")
+states/attack/position = Vector2(424.148, 155.333)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_mq7ti")
+states/death/position = Vector2(564, 116.667)
+states/idle/node = SubResource("AnimationNodeBlendSpace2D_qlrys")
+states/idle/position = Vector2(418.667, 46)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_bgjdc")
+states/walk/position = Vector2(419.111, 98.4444)
+graph_offset = Vector2(-131.4, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkoqh"]
 size = Vector2(15, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwkq6"]
 radius = 62.6498
 
-[node name="Goblin" type="CharacterBody2D" groups=["enemy"]]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
 script = ExtResource("1_dcjya")
+_animation_tree = NodePath("AnimationTree")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
@@ -327,10 +437,22 @@ libraries = {
 "": SubResource("AnimationLibrary_r6eus")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_cq16f")
+anim_player = NodePath("../Animation")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(-0.995413, -0.0143884)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
 show_behind_parent = true
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_gkoqh")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -339,5 +461,13 @@ show_behind_parent = true
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_xwkq6")
 
+[node name="GoblinDeathFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m4ee7")
+
+[node name="GoblinAttackFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vbqbt")
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

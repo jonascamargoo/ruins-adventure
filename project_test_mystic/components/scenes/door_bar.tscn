@@ -1,10 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj6ei7k6t6fn0"]
+[gd_scene load_steps=8 format=3 uid="uid://bj6ei7k6t6fn0"]
 
 [ext_resource type="Script" path="res://components/scripts/door_bar.gd" id="1_q2i7p"]
 [ext_resource type="Texture2D" uid="uid://djxjav204av5l" path="res://terrain/assets/interior/lpc-doors-animated-1.png" id="2_a8ukl"]
+[ext_resource type="AudioStream" uid="uid://cg2x2df231gtp" path="res://audio/others/door.ogg" id="3_q1oyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr8jg"]
-size = Vector2(17.625, 8.46875)
+size = Vector2(14.2813, 6.23438)
+
+[sub_resource type="Animation" id="Animation_dkehh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
 
 [sub_resource type="Animation" id="Animation_72fwb"]
 resource_name = "open"
@@ -22,21 +38,6 @@ tracks/0/keys = {
 "values": [15, 30, 36, 42]
 }
 
-[sub_resource type="Animation" id="Animation_dkehh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("textura:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_45xy1"]
 _data = {
 "RESET": SubResource("Animation_dkehh"),
@@ -50,15 +51,15 @@ _animation = NodePath("animation")
 
 [node name="textura" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(149.016, 58.2683)
-scale = Vector2(0.874511, 0.419657)
+position = Vector2(151.516, 56.9867)
+scale = Vector2(0.95263, 0.499609)
 texture = ExtResource("2_a8ukl")
 hframes = 6
 vframes = 8
 frame = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(161.72, 76)
+position = Vector2(169, 66)
 scale = Vector2(1.28, 1)
 shape = SubResource("RectangleShape2D_xr8jg")
 
@@ -66,6 +67,9 @@ shape = SubResource("RectangleShape2D_xr8jg")
 libraries = {
 "": SubResource("AnimationLibrary_45xy1")
 }
+
+[node name="DoorFx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q1oyq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]

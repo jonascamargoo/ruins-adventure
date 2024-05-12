@@ -1,6 +1,6 @@
 extends Area2D
 
-class_name DoorComponent
+class_name StairComponent
 
 var _player_ref: CharacterBody2D = null
 
@@ -21,13 +21,7 @@ func _process(delta):
 	pass
 
 func _on_body_entered(_body) -> void:
-	$DoorFx.play()
-	
 	if _body is CharacterBody2D:
+		$steps_stair.play()
 		_player_ref = _body
-		_animation.play("open")
-
-func _on_animation_finished(_anim_name: String) -> void:
-	if _anim_name == "open":
 		_player_ref.global_position = _teleport_position
-		
