@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 class_name Player
-const MAX_HEALTH = 1200
-const MAX_ENEMIES = 10
+const MAX_HEALTH = 1500
+const MAX_ENEMIES = 14
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
@@ -105,7 +105,8 @@ func _is_finished() -> void:
 
 	
 func update_health_ui() -> void:
-	$HealthLabel.text = "Health: %s" % _player_health
+	#$HealthLabel.text = "Health: %s" % _player_health
+	$HealthLabel.text = "Health"
 	$HealthBar.max_value = MAX_HEALTH
 	$HealthBar.value = _player_health
 	
