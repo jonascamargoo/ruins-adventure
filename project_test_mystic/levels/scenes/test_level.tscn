@@ -104,3 +104,18 @@ position = Vector2(135, 37)
 
 [node name="PauseMenu" parent="." instance=ExtResource("16_nkh5e")]
 visible = false
+
+[node name="Wraith" parent="." instance=ExtResource("10_gy16d")]
+position = Vector2(1343, 965)
+
+[node name="Zombie" parent="." instance=ExtResource("11_wvapy")]
+position = Vector2(1172, 765)
+
+[node name="Goblin" parent="." instance=ExtResource("7_dm4a0")]
+position = Vector2(904, 780)
+
+[node name="Mummy" parent="." instance=ExtResource("12_cpxpe")]
+position = Vector2(999, 842)
+
+[node name="skelly" parent="." instance=ExtResource("15_iei2l")]
+position = Vector2(1146, 928)

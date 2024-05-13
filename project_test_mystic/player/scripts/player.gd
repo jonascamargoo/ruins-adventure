@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
 class_name Player
-
+const MAX_HEALTH = 1200
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
-var _player_health: float = 700
-var _currentSound: AudioStreamPlayer2D = null
+var _player_health: float = MAX_HEALTH
 var _enemies_length: int = 0
 var _place = 0 # o place 0 eh a caverna principal, 1 a taberna e 2 a floresta
 
@@ -25,6 +24,8 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 	_animation_tree.active = true # para ativar a animationTree, caso tenhamos esquecido de reativar ao editar alguma animation
 	_state_machine = _animation_tree["parameters/playback"] # a partir desse playback poderemos viajar entre o idle e walk
 	$StartedFx.play()
+	
+	update_health_ui()
 	
 
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
@@ -93,11 +94,19 @@ func update_player_health() -> void:
 	_player_health -= 1
 	if _player_health <= 0:
 		kill_player()
+	update_health_ui()
 
 func _is_finished() -> void:
 	if _enemies_length == 4:
 		await get_tree().create_timer(4, 0).timeout
 		get_tree().change_scene_to_file("res://menu/title_screen.tscn")
+
+	
+func update_health_ui() -> void:
+	$HealthLabel.text = "Health: %s" % _player_health
+	$HealthBar.max_value = MAX_HEALTH
+	$HealthBar.value = _player_health
+	
 
 func kill_player() -> void:
 	_is_dead = true

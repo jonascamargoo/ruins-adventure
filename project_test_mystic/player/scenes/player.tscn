@@ -948,5 +948,17 @@ volume_db = 14.667
 [node name="ForestFx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_d433v")
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 39.0
+offset_top = 11.0
+offset_right = 152.0
+offset_bottom = 38.0
+step = 1.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
