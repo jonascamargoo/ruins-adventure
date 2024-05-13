@@ -39,7 +39,7 @@ func _move(_direction: Vector2, _distance: float) -> void:
 
 func _attack(_distance) -> void:
 	if _distance < 20:
-		if !_is_attacking:
+		if ! _is_attacking:
 			$MummyAttackFx.play()
 		_is_attacking = true
 		_player_ref.update_player_health()

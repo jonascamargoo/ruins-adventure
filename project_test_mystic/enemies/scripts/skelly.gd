@@ -87,7 +87,6 @@ func _animate() -> void:
 	if _is_dead:
 		$skelly_death.play()
 		_player_ref._enemies_left -= 1
-		
 		_state_machine.travel("death")
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
