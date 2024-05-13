@@ -660,6 +660,7 @@ graph_offset = Vector2(0, 65.7297)
 radius = 99.1262
 
 [node name="skelly" type="CharacterBody2D" node_paths=PackedStringArray("_texture", "_animation_tree", "_timer") groups=["enemy"]]
+z_index = 2
 script = ExtResource("1_dfldo")
 _texture = NodePath("texture")
 _animation_tree = NodePath("AnimationTree_Skelly")

@@ -382,6 +382,7 @@ size = Vector2(20, 25)
 radius = 107.075
 
 [node name="Mummy" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
+z_index = 2
 script = ExtResource("1_wk2ai")
 _animation_tree = NodePath("AnimationTree")
 

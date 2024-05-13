@@ -418,9 +418,10 @@ graph_offset = Vector2(-131.4, 0)
 size = Vector2(15, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwkq6"]
-radius = 62.6498
+radius = 104.005
 
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
+z_index = 2
 script = ExtResource("1_dcjya")
 _animation_tree = NodePath("AnimationTree")
 

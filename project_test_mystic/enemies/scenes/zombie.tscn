@@ -383,6 +383,7 @@ size = Vector2(15, 24)
 radius = 127.004
 
 [node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["enemy"]]
+z_index = 2
 script = ExtResource("1_86hcq")
 _animation_tree = NodePath("AnimationTree")
 

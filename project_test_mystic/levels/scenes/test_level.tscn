@@ -60,7 +60,6 @@ _teleport_position = Vector2(608, 438)
 y_sort_enabled = true
 
 [node name="Goblin" parent="YSort" instance=ExtResource("7_dm4a0")]
-z_index = 2
 position = Vector2(214, 357)
 
 [node name="skelly2" parent="YSort" instance=ExtResource("15_iei2l")]
@@ -92,7 +91,6 @@ y_sort_enabled = true
 position = Vector2(284, 226)
 
 [node name="Wraith" parent="YSort" instance=ExtResource("10_gy16d")]
-z_index = 2
 position = Vector2(581, 426)
 
 [node name="Zombie" parent="YSort" instance=ExtResource("11_wvapy")]
@@ -100,7 +98,6 @@ z_index = 2
 position = Vector2(1317, 387)
 
 [node name="Mummy" parent="YSort" instance=ExtResource("12_cpxpe")]
-z_index = 2
 position = Vector2(180, 70)
 
 [node name="skelly" parent="YSort" instance=ExtResource("15_iei2l")]
