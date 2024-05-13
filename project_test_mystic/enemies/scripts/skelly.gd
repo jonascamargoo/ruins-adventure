@@ -86,6 +86,8 @@ func _on_attack_timer_timeout() -> void:
 func _animate() -> void:
 	if _is_dead:
 		$skelly_death.play()
+		_player_ref._enemies_length += 1
+		
 		_state_machine.travel("death")
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
@@ -102,7 +104,6 @@ func update_enemy_health() -> void:
 		_animate()
 	else:
 		_health_enemy -= 1
-		print(_health_enemy)
 
 func _on_attack_area_body_entered(_body)-> bool:
 	if _player_ref.is_in_group("player"):

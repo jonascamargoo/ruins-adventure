@@ -963,5 +963,12 @@ offset_right = -113.0
 offset_bottom = -70.0
 theme_override_font_sizes/font_size = 10
 
+[node name="EnemiesLeft" type="Label" parent="."]
+offset_left = 74.0
+offset_top = -86.0
+offset_right = 130.0
+offset_bottom = -70.0
+theme_override_font_sizes/font_size = 10
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

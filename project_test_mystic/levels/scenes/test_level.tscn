@@ -89,7 +89,7 @@ position = Vector2(467, 278)
 
 [node name="Wraith" parent="YSort" instance=ExtResource("10_gy16d")]
 z_index = 2
-position = Vector2(166, 456)
+position = Vector2(235, 301)
 
 [node name="Zombie" parent="YSort" instance=ExtResource("11_wvapy")]
 z_index = 2
