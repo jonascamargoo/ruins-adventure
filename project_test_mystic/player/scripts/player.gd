@@ -7,7 +7,6 @@ var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
 var _player_health: float = MAX_HEALTH
-var _enemies_length: int = 0
 var _enemies_left: int = MAX_ENEMIES
 var _place = 0 # o place 0 eh a caverna principal, 1 a taberna e 2 a floresta
 
@@ -32,6 +31,7 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
 func _physics_process(_delta: float) -> void:
+	print(_enemies_left)
 	_is_finished()
 	if _is_dead:
 		return
@@ -99,8 +99,9 @@ func update_player_health() -> void:
 	update_health_ui()
 
 func _is_finished() -> void:
-	if _enemies_length == MAX_ENEMIES:
-		await get_tree().create_timer(4, 0).timeout
+	update_enemies_left()
+	if _enemies_left == 0:
+		await get_tree().create_timer(2, 0).timeout
 		get_tree().change_scene_to_file("res://menu/title_screen.tscn")
 
 	
