@@ -31,7 +31,6 @@ func _ready() -> void: # chamado quando o nó entra na árvore de cena pela prim
 
 # o delta eh o intervalo de tempo entre um frame e o outro, a funcao eh chamada a cada delta
 func _physics_process(_delta: float) -> void:
-	print(_enemies_left)
 	_is_finished()
 	if _is_dead:
 		return
