@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 const MAX_HEALTH = 1200
-const MAX_ENEMIES = 5
+const MAX_ENEMIES = 10
 var _state_machine
 var _is_dead: bool = false
 var _is_attacking: bool = false
