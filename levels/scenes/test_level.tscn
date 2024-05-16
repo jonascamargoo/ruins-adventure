@@ -94,7 +94,6 @@ position = Vector2(284, 226)
 position = Vector2(581, 426)
 
 [node name="Zombie" parent="YSort" instance=ExtResource("11_wvapy")]
-z_index = 2
 position = Vector2(1317, 387)
 
 [node name="Mummy" parent="YSort" instance=ExtResource("12_cpxpe")]
