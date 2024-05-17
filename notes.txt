@@ -1,3 +1,0 @@
-- Bug na transiçao da animação da esquerda para direita em walk_left -> walk_right
-
-- Bug ao pressionar botao de ataque várias vezes seguidas. Utilizei timeout para resolver
