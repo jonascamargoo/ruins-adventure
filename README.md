@@ -17,4 +17,4 @@ Contando com um personagem principal, o protótipo possui 3 cenas e alguns inimi
 
 ## Executando o projeto
 
-O jogo foi exportado para versão linux e windows, em suas respectivas pastas na raiz do projeto. Caso a engine esteja disponível na máquina, selecione a opção `Play the project`, com F5, que resultará no menu inicial do jogo.
+O jogo foi exportado para versão linux e windows e o executável está na pasta `runnable`. Caso a engine esteja disponível na máquina, selecione a opção `Play the project`, com F5, que resultará no menu inicial do jogo.
